@@ -5,12 +5,10 @@ import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Table(name = "movie")
@@ -58,11 +56,6 @@ public class MovieEntity {
             inverseJoinColumns = @JoinColumn(name = "character_id"))
 
     private List<CharacterEntity> characters = new ArrayList<>();
-
-
-    public void addCharacter(CharacterEntity character){this.characters.add(character); }
-
-    public void removeCharacter(CharacterEntity character){this.characters.add(character); }
 
 
     @Override

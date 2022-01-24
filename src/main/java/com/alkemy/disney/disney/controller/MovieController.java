@@ -1,15 +1,13 @@
 package com.alkemy.disney.disney.controller;
 
-import com.alkemy.disney.disney.dto.basic.MovieBasicDTO;
 import com.alkemy.disney.disney.dto.MovieDTO;
+import com.alkemy.disney.disney.dto.basic.MovieBasicDTO;
 import com.alkemy.disney.disney.service.MovieService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -25,11 +23,6 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.CREATED).body(movieSalved);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<MovieBasicDTO>> getAllBasic(){
-        List<MovieBasicDTO> movies = this.movieService.getAllBasicMovies();
-        return ResponseEntity.ok(movies);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<MovieDTO> getById(@PathVariable Long id) {
@@ -38,13 +31,13 @@ public class MovieController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MovieDTO>> getDetailsByFilters(
+    public ResponseEntity<List<MovieBasicDTO>> getDetailsByFilters(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String creationDate,
             @RequestParam(required = false) Long genreId,
             @RequestParam(required = false, defaultValue = "ASC") String order
     ){
-    List<MovieDTO> movies = this.movieService.getByFilters(title, creationDate, genreId, order);
+    List<MovieBasicDTO> movies = this.movieService.getByFilters(title, creationDate, genreId, order);
        return  ResponseEntity.ok(movies);
     }
 

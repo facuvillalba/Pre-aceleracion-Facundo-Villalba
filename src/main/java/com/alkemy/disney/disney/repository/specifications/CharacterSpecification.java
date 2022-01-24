@@ -4,12 +4,10 @@ import com.alkemy.disney.disney.dto.filters.CharacterFiltersDTO;
 import com.alkemy.disney.disney.entity.CharacterEntity;
 import com.alkemy.disney.disney.entity.MovieEntity;
 import org.springframework.data.jpa.domain.Specification;
-
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
-
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
@@ -26,7 +24,6 @@ public class CharacterSpecification {
 
             List<Predicate> predicates = new ArrayList<>();
 
-            //for string
             if (StringUtils.hasLength(filtersDTO.getName())) {
                 predicates.add(
                         criteriaBuilder.like(
@@ -36,7 +33,6 @@ public class CharacterSpecification {
                 );
             }
 
-            //for numbers
             if (!ObjectUtils.isEmpty(filtersDTO.getAge()) || filtersDTO.getAge() != null) {
                 predicates.add(
                         criteriaBuilder.like(
@@ -46,7 +42,6 @@ public class CharacterSpecification {
                 );
             }
 
-            //for numbers
             if (!ObjectUtils.isEmpty(filtersDTO.getWeight()) || filtersDTO.getWeight() != null) {
                 predicates.add(
                         criteriaBuilder.like(

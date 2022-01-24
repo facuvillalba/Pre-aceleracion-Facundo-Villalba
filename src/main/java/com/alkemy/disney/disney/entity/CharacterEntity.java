@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +36,7 @@ public class CharacterEntity {
             CascadeType.MERGE})
 
     private List<MovieEntity> movies = new ArrayList<>();
+
 
     @Override
     public boolean equals(Object obj){

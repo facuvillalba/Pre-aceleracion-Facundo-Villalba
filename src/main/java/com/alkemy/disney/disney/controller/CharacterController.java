@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,26 +23,21 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.CREATED).body(characterSaved);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<CharacterBasicDTO>> getAllBasic(){
-        List<CharacterBasicDTO> characters = this.characterService.getAllBasicCharacters();
-        return ResponseEntity.ok().body(characters);
-    }
-
-    @GetMapping("/{id}")
+   @GetMapping("/{id}")
     public ResponseEntity<CharacterDTO> getById(@PathVariable Long id) {
         CharacterDTO character = this.characterService.getById(id);
         return ResponseEntity.ok().body(character);
     }
 
+
     @GetMapping
-    public ResponseEntity<List<CharacterDTO>> getDetailsByFilters(
+    public ResponseEntity<List<CharacterBasicDTO>> getDetailsByFilters(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Integer age,
             @RequestParam(required = false) Long weight,
             @RequestParam(required = false) List<Long> movies
             ){
-            List<CharacterDTO> characters = this.characterService.getByFilters(name,age, weight, movies);
+            List<CharacterBasicDTO> characters = this.characterService.getByFilters(name,age, weight, movies);
             return ResponseEntity.ok(characters);
     }
 

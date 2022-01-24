@@ -59,14 +59,6 @@ public class MovieMapper {
         return dtos;
     }
 
-    public List<MovieEntity> movieDTOList2EntityList(List<MovieDTO> dtos){
-        List<MovieEntity> entities = new ArrayList<>();
-        for (MovieDTO dto: dtos) {
-            entities.add(this.movieDTO2Entity(dto));
-        }
-        return entities;
-    }
-
     public void movieEntityRefreshValues(MovieEntity entity, MovieDTO movieDTO) {
         entity.setImage(movieDTO.getImage());
         entity.setTitle(movieDTO.getTitle());

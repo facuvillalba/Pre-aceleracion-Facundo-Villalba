@@ -52,7 +52,7 @@ public class MovieSpecification {
 
             query.distinct(true);
 
-            String orderByFied = "title";
+            String orderByFied = "creationDate";
             query.orderBy(
                     filtersDTO.isASC() ?
                             criteriaBuilder.asc(root.get(orderByFied)) :
