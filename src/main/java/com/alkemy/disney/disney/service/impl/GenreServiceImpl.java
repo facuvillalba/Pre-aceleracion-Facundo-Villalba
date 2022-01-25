@@ -19,6 +19,7 @@ public class GenreServiceImpl implements GenreService {
     @Autowired
     private GenreRepository genreRepository;
 
+    //Service to save genre in Repository.
     public GenreDTO save(GenreDTO dto) {
         GenreEntity entity = genreMapper.genreDTO2Entity(dto);
         GenreEntity entitySaved = genreRepository.save(entity);
@@ -26,9 +27,15 @@ public class GenreServiceImpl implements GenreService {
         return result;
     }
 
+    //Service to get all genres in repository.
     public List<GenreDTO> getAllGenres() {
         List<GenreEntity> entities = genreRepository.findAll();
         List<GenreDTO> result = genreMapper.genreEntityList2DTOList(entities);
         return result;
+    }
+
+    //Service to softly delete genre in Repository.
+    public void delete(Long id){
+        genreRepository.deleteById(id);
     }
 }

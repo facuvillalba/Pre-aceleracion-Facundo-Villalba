@@ -16,7 +16,7 @@ public class MovieDTO {
 
     private String title;
 
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
 
     private Integer qualification;

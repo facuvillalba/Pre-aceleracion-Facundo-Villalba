@@ -2,7 +2,6 @@ package com.alkemy.disney.disney.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.List;
 
 @Getter

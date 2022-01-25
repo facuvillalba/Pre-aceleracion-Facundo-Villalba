@@ -3,37 +3,36 @@ package com.alkemy.disney.disney.service.impl;
 import com.alkemy.disney.disney.dto.basic.MovieBasicDTO;
 import com.alkemy.disney.disney.dto.MovieDTO;
 import com.alkemy.disney.disney.dto.filters.MovieFiltersDTO;
+import com.alkemy.disney.disney.entity.CharacterEntity;
 import com.alkemy.disney.disney.entity.MovieEntity;
 import com.alkemy.disney.disney.exception.ParamNotFound;
 import com.alkemy.disney.disney.mapper.MovieMapper;
 import com.alkemy.disney.disney.repository.MovieRepository;
 import com.alkemy.disney.disney.repository.specifications.MovieSpecification;
+import com.alkemy.disney.disney.service.CharacterService;
 import com.alkemy.disney.disney.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class MovieServiceImpl implements MovieService {
 
+    @Autowired
     private MovieMapper movieMapper;
 
+    @Autowired
     private MovieRepository movieRepository;
 
+    @Autowired
     private MovieSpecification movieSpecification;
 
+    @Autowired
+    private CharacterService characterService;
 
-   @Autowired
-    public MovieServiceImpl(
-            MovieRepository movieRepository,
-            MovieSpecification movieSpecification,
-            MovieMapper movieMapper) {
-        this.movieRepository = movieRepository;
-        this.movieSpecification = movieSpecification;
-        this.movieMapper = movieMapper;
-    }
-
+    //Service to save movie in Repository.
     public MovieDTO save(MovieDTO dto) {
         MovieEntity entity = this.movieMapper.movieDTO2Entity(dto);
         MovieEntity entitySaved = this.movieRepository.save(entity);
@@ -41,6 +40,7 @@ public class MovieServiceImpl implements MovieService {
         return result;
     }
 
+    //Service to search movie by id in Repository.
     public MovieDTO getById(Long id) {
         Optional<MovieEntity> entity = this.movieRepository.findById(id);
         if(!entity.isPresent()){
@@ -50,13 +50,15 @@ public class MovieServiceImpl implements MovieService {
         return movieDTO;
     }
 
-    public List<MovieBasicDTO> getByFilters (String title, String creationDate, Long genreId, String order){
-        MovieFiltersDTO filtersDTO = new MovieFiltersDTO(title, creationDate, genreId, order);
+    //Service to search movie with filters in Repository.
+    public List<MovieBasicDTO> getByFilters (String title, Long genreId, String order){
+        MovieFiltersDTO filtersDTO = new MovieFiltersDTO(title, genreId, order);
         List<MovieEntity> entities = this.movieRepository.findAll(this.movieSpecification.getByFilters(filtersDTO));
         List<MovieBasicDTO> dtos = this.movieMapper.movieEntityList2BasicDTOList(entities);
        return dtos;
     }
 
+    //Service to softly delete movie in Repository.
     public void delete(Long id){
        Optional<MovieEntity> entity = this.movieRepository.findById(id);
            if (!entity.isPresent()){
@@ -65,6 +67,16 @@ public class MovieServiceImpl implements MovieService {
        this.movieRepository.deleteById(id);
    }
 
+    //Service to add new character to a movie.
+   public void addCharacter(Long idMovie, CharacterEntity character){
+       MovieEntity movieEntity = getEntityById(idMovie);
+       List<CharacterEntity> entities = movieEntity.getCharacters();
+       entities.add(character);
+       movieEntity.setCharacters(entities);
+       movieRepository.save(movieEntity);
+   }
+
+    //Service to update movie in Repository.
     public MovieDTO update (Long id, MovieDTO movieDTO) {
         Optional<MovieEntity> entity = this.movieRepository.findById(id);
         if (!entity.isPresent()) {
@@ -76,4 +88,19 @@ public class MovieServiceImpl implements MovieService {
         return result;
     }
 
+    public MovieEntity getEntityById(Long id){
+       MovieEntity movieEntity = movieRepository.getById(id);
+       return movieEntity;
+    }
+
+    //Service to add new List characters to a movie.
+    public void addCharacterList(Long idMovie, List<Long> charactersId) {
+        MovieEntity movie = getEntityById(idMovie);
+        List<CharacterEntity> movieCharacters = movie.getCharacters();
+        for (Long id : charactersId) {
+            movieCharacters.add(characterService.getEntityById(id));
+        }
+        movie.setCharacters(movieCharacters);
+        movieRepository.save(movie);
+    }
 }

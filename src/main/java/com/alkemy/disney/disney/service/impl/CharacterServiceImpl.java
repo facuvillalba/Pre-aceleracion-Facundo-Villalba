@@ -19,33 +19,28 @@ import java.util.Optional;
 @Service
 public class CharacterServiceImpl implements CharacterService {
 
+    @Autowired
     private CharacterSpecification characterSpecification;
 
+    @Autowired
     private MovieService movieService;
 
+    @Autowired
     private CharacterMapper characterMapper;
 
+    @Autowired
     private CharacterRepository characterRepository;
 
-    @Autowired
-    public CharacterServiceImpl(
-            CharacterRepository characterRepository,
-            CharacterSpecification characterSpecification,
-            MovieService movieService,
-            CharacterMapper characterMapper) {
-        this.characterRepository = characterRepository;
-        this.characterSpecification = characterSpecification;
-        this.movieService = movieService;
-        this.characterMapper = characterMapper;
-    }
-
-    public CharacterDTO save(CharacterDTO dto) {
+    //Service to save character in Repository.
+    public CharacterDTO save(CharacterDTO dto, Long idMovie) {
         CharacterEntity entity = this.characterMapper.characterDTO2Entity(dto);
         CharacterEntity entitySaved = this.characterRepository.save(entity);
+        movieService.addCharacter(idMovie, entitySaved);
         CharacterDTO result = this.characterMapper.characterEntity2DTO(entitySaved, true);
         return result;
     }
 
+    //Service to search character by id in Repository.
     public CharacterDTO getById(Long id) {
         Optional<CharacterEntity> entity = this.characterRepository.findById(id);
         if(!entity.isPresent()){
@@ -55,6 +50,7 @@ public class CharacterServiceImpl implements CharacterService {
         return characterDTO;
     }
 
+    //Service to search character with filters in Repository.
     public List<CharacterBasicDTO> getByFilters(String name, Integer age, Long weight, List<Long> movies) {
         CharacterFiltersDTO filtersDTO = new CharacterFiltersDTO(name, age, weight, movies);
         List<CharacterEntity> entities = this.characterRepository.findAll(this.characterSpecification.getByFilters(filtersDTO));
@@ -62,6 +58,7 @@ public class CharacterServiceImpl implements CharacterService {
         return dtos;
     }
 
+    //Service to softly delete character in Repository.
     public void delete (Long id){
         Optional<CharacterEntity> entity = this.characterRepository.findById(id);
         if (!entity.isPresent()){
@@ -70,6 +67,7 @@ public class CharacterServiceImpl implements CharacterService {
         this.characterRepository.deleteById(id);
     }
 
+    //Service to update character in Repository.
     public CharacterDTO update (Long id, CharacterDTO character) {
         Optional<CharacterEntity> entity = this.characterRepository.findById(id);
         if (!entity.isPresent()){
@@ -81,4 +79,8 @@ public class CharacterServiceImpl implements CharacterService {
         return result;
     }
 
+    //Service to search character by id in repository.
+    public CharacterEntity getEntityById(Long id) {
+        return characterRepository.getById(id);
+    }
 }

@@ -27,7 +27,7 @@ public class MovieEntity {
     private String title;
 
     @Column(name = "creation_date")
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
 
     private Integer qualification;

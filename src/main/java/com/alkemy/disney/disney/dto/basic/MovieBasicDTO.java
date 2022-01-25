@@ -8,13 +8,14 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class MovieBasicDTO {
+
     private Long id;
 
     private String image;
 
     private String title;
 
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
 
 }

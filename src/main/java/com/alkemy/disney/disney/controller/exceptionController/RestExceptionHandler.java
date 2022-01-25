@@ -1,6 +1,5 @@
 package com.alkemy.disney.disney.controller.exceptionController;
 
-
 import com.alkemy.disney.disney.dto.error.ApiErrorDTO;
 import com.alkemy.disney.disney.exception.ParamNotFound;
 import org.springframework.http.HttpHeaders;
@@ -10,9 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 import java.util.Arrays;
-
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {

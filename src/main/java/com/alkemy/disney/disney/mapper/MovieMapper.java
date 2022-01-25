@@ -7,7 +7,6 @@ import com.alkemy.disney.disney.entity.MovieEntity;
 import com.alkemy.disney.disney.entity.CharacterEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +16,13 @@ public class MovieMapper {
    @Autowired
    private CharacterMapper characterMapper;
 
+    //Mapper convert from movieDTO to Entity
     public MovieEntity movieDTO2Entity(MovieDTO dto){
-
         MovieEntity movieEntity = new MovieEntity();
         movieEntity.setImage(dto.getImage());
         movieEntity.setTitle(dto.getTitle());
         movieEntity.setCreationDate(dto.getCreationDate());
         movieEntity.setQualification(dto.getQualification());
-
         movieEntity.setGenreId(dto.getGenreId());
 
         List<CharacterEntity> personajesEntities = this.characterMapper.characterDTOList2EntityList(dto.getCharacters());
@@ -33,24 +31,24 @@ public class MovieMapper {
         return movieEntity;
     }
 
+    //Mapper convert from movieEntity to DTO
     public MovieDTO movieEntity2DTO(MovieEntity entity, boolean loadPersonajes){
-
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setId(entity.getId());
         movieDTO.setImage(entity.getImage());
         movieDTO.setTitle(entity.getTitle());
         movieDTO.setCreationDate(entity.getCreationDate());
         movieDTO.setQualification(entity.getQualification());
-
         movieDTO.setGenreId(entity.getGenreId());
 
         if(loadPersonajes) {
-            List<CharacterDTO> characterDTOS = this.characterMapper.characterEntityList2DTOList(entity.getCharacters(), false);
+            List<CharacterDTO> characterDTOS = this.characterMapper.characterEntityList2DTOList(entity.getCharacters(), true);
             movieDTO.setCharacters(characterDTOS);
         }
         return movieDTO;
     }
 
+    //Mapper convert from List movieEntity to List DTO
     public List<MovieDTO> movieEntityList2DTOList(List<MovieEntity> entities, boolean loadPersonajes){
         List<MovieDTO> dtos = new ArrayList<>();
         for (MovieEntity entity : entities) {
@@ -59,6 +57,7 @@ public class MovieMapper {
         return dtos;
     }
 
+    //Mapper update
     public void movieEntityRefreshValues(MovieEntity entity, MovieDTO movieDTO) {
         entity.setImage(movieDTO.getImage());
         entity.setTitle(movieDTO.getTitle());
@@ -71,6 +70,7 @@ public class MovieMapper {
         }
     }
 
+    //Mapper convert List movieEntity to List BasicDTO
     public List<MovieBasicDTO> movieEntityList2BasicDTOList(List<MovieEntity> entities){
         List<MovieBasicDTO> dtos = new ArrayList<>();
         MovieBasicDTO basicDTO;

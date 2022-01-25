@@ -2,7 +2,6 @@ package com.alkemy.disney.disney.dto.filters;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.List;
 
 @Getter
@@ -19,7 +18,5 @@ public class CharacterFiltersDTO {
         this.age = age;
         this.weight = weight;
         this.movies = movies;
-
     }
-
 }

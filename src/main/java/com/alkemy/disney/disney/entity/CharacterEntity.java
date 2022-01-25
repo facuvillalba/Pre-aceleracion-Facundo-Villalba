@@ -29,7 +29,7 @@ public class CharacterEntity {
 
     private String story;
 
-    private boolean deleted = Boolean.FALSE;//
+    private boolean deleted = Boolean.FALSE;
 
     @ManyToMany(mappedBy = "characters", cascade = {
             CascadeType.PERSIST,
