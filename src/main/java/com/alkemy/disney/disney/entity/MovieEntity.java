@@ -1,7 +1,6 @@
 package com.alkemy.disney.disney.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +15,8 @@ import java.util.List;
 @Setter
 @SQLDelete(sql = "UPDATE movie SET deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class MovieEntity {
 
     @Id
@@ -67,4 +68,5 @@ public class MovieEntity {
         final MovieEntity other = (MovieEntity) obj;
         return other.id == this.id;
     }
+
 }

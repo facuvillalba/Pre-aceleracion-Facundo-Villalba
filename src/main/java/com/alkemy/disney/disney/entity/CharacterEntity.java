@@ -15,6 +15,7 @@ import java.util.List;
 @SQLDelete(sql = "UPDATE charac SET deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 public class CharacterEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -37,14 +38,4 @@ public class CharacterEntity {
 
     private List<MovieEntity> movies = new ArrayList<>();
 
-
-    @Override
-    public boolean equals(Object obj){
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final CharacterEntity other = (CharacterEntity) obj;
-        return other.id == this.id;
-    }
 }

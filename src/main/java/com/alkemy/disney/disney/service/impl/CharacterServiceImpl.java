@@ -35,7 +35,7 @@ public class CharacterServiceImpl implements CharacterService {
     public CharacterDTO save(CharacterDTO dto, Long idMovie) {
         CharacterEntity entity = this.characterMapper.characterDTO2Entity(dto);
         CharacterEntity entitySaved = this.characterRepository.save(entity);
-        movieService.addCharacter(idMovie, entitySaved);
+        movieService.addCharacter(idMovie, entitySaved.getId());
         CharacterDTO result = this.characterMapper.characterEntity2DTO(entitySaved, true);
         return result;
     }

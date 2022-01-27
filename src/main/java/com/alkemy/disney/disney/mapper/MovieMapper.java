@@ -42,7 +42,7 @@ public class MovieMapper {
         movieDTO.setGenreId(entity.getGenreId());
 
         if(loadPersonajes) {
-            List<CharacterDTO> characterDTOS = this.characterMapper.characterEntityList2DTOList(entity.getCharacters(), true);
+            List<CharacterDTO> characterDTOS = this.characterMapper.characterEntityList2DTOList(entity.getCharacters(), false);
             movieDTO.setCharacters(characterDTOS);
         }
         return movieDTO;

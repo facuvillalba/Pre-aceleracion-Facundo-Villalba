@@ -6,10 +6,74 @@
 	},
 	"item": [
 		{
-			"name": "Genre",
+			"name": "register",
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"villalbafacundo@hotmail.com\",\r\n    \"password\" : \"pass0001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/singup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"singup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"cacucax@hotmail.com\",\r\n    \"password\": \"pass0002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genre",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"name\": \"Comedy\",\r\n    \"image\": \"/usr/tmp/Com.jpg\"\r\n}",
@@ -34,10 +98,16 @@
 			"response": []
 		},
 		{
-			"name": "Genres",
+			"name": "genres",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/genres",
 					"protocol": "http",
@@ -53,10 +123,16 @@
 			"response": []
 		},
 		{
-			"name": "Genre/id",
+			"name": "genre/id",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/genres/4",
 					"protocol": "http",
@@ -67,19 +143,32 @@
 					"path": [
 						"genres",
 						"4"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Movie",
+			"name": "movie",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n{\r\n    \"image\": \"/usr/tmp/Coc.jpg\",\r\n    \"title\": \"Coco\",\r\n    \"creationDate\": \"2017-06-01\",\r\n    \"qualification\": 4,\r\n    \"genreId\": 2,\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"/usr/tmp/Mig.jpg\",\r\n            \"name\": \"Miguel\",\r\n            \"age\": \"12\",\r\n            \"weight\": \"30\",\r\n            \"story\": \"Un niño de doce años de edad con aspiraciones musicales.\",\r\n            \"movies\": []\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/Hec.jpg\",\r\n            \"name\": \"Héctor\",\r\n            \"age\": \"40\",\r\n            \"weight\": \"60\",\r\n            \"story\": \"Acompaña a Miguel en su travesía por la tierra de los muertos.\",\r\n            \"movies\": []\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/Ern.jpg\",\r\n            \"name\": \"Ernesto de la Cruz\",\r\n            \"age\": \"42\",\r\n            \"weight\": \"70\",\r\n            \"story\": \"El cantante más famoso de México e ídolo de Miguel.\",\r\n            \"movies\": []\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/Pir.jpg\",\r\n    \"title\": \"Pirates of the Caribbean 2\",\r\n    \"creationDate\": \"2006-06-20\",\r\n    \"qualification\": 4,\r\n    \"genreId\": 3,\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"/usr/tmp/Pir2.jpg\",\r\n            \"name\": \"Davy Jones\",\r\n            \"age\": \"40\",\r\n            \"weight\": \"70\",\r\n            \"story\": \"El Amo de las Profundidades del Océano, que capitanea el fantasmal barco Holandés Errante.\",\r\n            \"movies\": []\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/Hect.jpg\",\r\n            \"name\": \"Héctor Barbossa\",\r\n            \"age\": \"40\",\r\n            \"weight\": \"70\",\r\n            \"story\": \"La primera vez que apareció fue a bordo de La Perla Negra, la cual estaba maldita junto a toda su tripulación.\",\r\n            \"movies\": []\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/Jam.jpg\",\r\n            \"name\": \"Comodoro James Norrington\",\r\n            \"age\": \"40\",\r\n            \"weight\": \"70\",\r\n            \"story\": \"Un oficial de la Marina Real Británica que está enamorado de Elizabeth y es un firme enemigo de la piratería.\",\r\n            \"movies\": []\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/Wea.jpg\",\r\n            \"name\": \"Gobernador Weatherby Swann\",\r\n            \"age\": \"60\",\r\n            \"weight\": \"70\",\r\n            \"story\": \"Gobernador de Jamaica, instalado en Port Royal, y padre de Elizabeth Swann.\",\r\n            \"movies\": []\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,10 +190,16 @@
 			"response": []
 		},
 		{
-			"name": "Movies?filters",
+			"name": "movies?filters",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/movies",
 					"protocol": "http",
@@ -123,7 +218,7 @@
 						},
 						{
 							"key": "genreId",
-							"value": "2",
+							"value": "3",
 							"disabled": true
 						},
 						{
@@ -142,12 +237,18 @@
 			"response": []
 		},
 		{
-			"name": "Movie/id",
+			"name": "movie/id",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/movies/17",
+					"raw": "http://localhost:8080/movies/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -155,19 +256,25 @@
 					"port": "8080",
 					"path": [
 						"movies",
-						"17"
+						"6"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Movie/id",
+			"name": "movie/id",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/movies/13",
+					"raw": "http://localhost:8080/movies/14",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -175,20 +282,54 @@
 					"port": "8080",
 					"path": [
 						"movies",
-						"13"
+						"14"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Movie/id",
+			"name": "movie?character",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/6/character/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"6",
+						"character",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie/id",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/Coc.jpg\",\r\n    \"title\": \"Coco\",\r\n    \"creationDate\": \"2017-06-01\",\r\n    \"qualification\": 2,\r\n    \"genreId\": 2,\r\n    \"characters\": []\r\n}",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/Coc.jpg\",\r\n    \"title\": \"Coco\",\r\n    \"creationDate\": \"2017-06-01\",\r\n    \"qualification\": 3,\r\n    \"genreId\": 2,\r\n    \"characters\": []\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -196,7 +337,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/movies/17",
+					"raw": "http://localhost:8080/movies/18",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -204,17 +345,51 @@
 					"port": "8080",
 					"path": [
 						"movies",
-						"17"
+						"18"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Movie?withcharacters",
+			"name": "movie?character",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/22/character/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"22",
+						"character",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie?withcharacters",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1Y2F4QGhvdG1haWwuY29tIiwiZXhwIjoxNjQzMjYyMzIyLCJpYXQiOjE2NDMyMjYzMjJ9.oNJ3SwJNulPB8og2S8CVLeaJbsZuOMWHd91NBhTWGXc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"image\": \"/usr/tmp/Pir2.jpg\",\r\n    \"title\": \"Pirates of the Caribbean 2\",\r\n    \"creationDate\": \"2006-01-01\",\r\n    \"qualification\": 5,\r\n    \"genreId\": 3,\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"/usr/tmp/Pir2.jpg\",\r\n            \"name\": \"Davy Jones \",\r\n            \"age\": \"40\",\r\n            \"weight\": \"75\",\r\n            \"story\": \"El Amo de las Profundidades del Océano, que capitanea el fantasmal barco Holandés Errante.\",\r\n            \"movies\": []\r\n        }\r\n    ]\r\n}",
@@ -246,46 +421,18 @@
 			"response": []
 		},
 		{
-			"name": "Character",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/Hu.jpg\",\r\n    \"name\": \"Hulk\",\r\n    \"age\": \"33\",\r\n    \"weight\": \"500\",\r\n    \"story\": \"Grande y verde.\",\r\n    \"movies\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/characters?idMovie=16",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"characters"
-					],
-					"query": [
-						{
-							"key": "idMovie",
-							"value": "16"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Character?filters",
+			"name": "character?filters",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/characters",
+					"raw": "http://localhost:8080/characters?weight=70",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -297,7 +444,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Jack Sparrow",
+							"value": "Pepe",
 							"disabled": true
 						},
 						{
@@ -307,8 +454,7 @@
 						},
 						{
 							"key": "weight",
-							"value": "70",
-							"disabled": true
+							"value": "70"
 						},
 						{
 							"key": "movies",
@@ -321,12 +467,18 @@
 			"response": []
 		},
 		{
-			"name": "Character/id",
+			"name": "character/id",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/characters/20",
+					"raw": "http://localhost:8080/characters/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -334,17 +486,23 @@
 					"port": "8080",
 					"path": [
 						"characters",
-						"20"
+						"11"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Character/id",
+			"name": "character/id",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/characters/16",
 					"protocol": "http",
@@ -361,13 +519,19 @@
 			"response": []
 		},
 		{
-			"name": "Character/id",
+			"name": "character/id",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/Ern.jpg\",\r\n    \"name\": \"Ernesto de la Cruz\",\r\n    \"age\": 40,\r\n    \"weight\": 70,\r\n    \"story\": \"El cantante más famoso de México e ídolo de Miguel.\"\r\n}",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/Ern.jpg\",\r\n    \"name\": \"Ernesto de la Cruz\",\r\n    \"age\": 50,\r\n    \"weight\": 80,\r\n    \"story\": \"El cantante más famoso de México e ídolo de Miguel.\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -375,7 +539,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/characters/20",
+					"raw": "http://localhost:8080/characters/21",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -383,20 +547,26 @@
 					"port": "8080",
 					"path": [
 						"characters",
-						"20"
+						"21"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Character?withmovie",
+			"name": "character?withmovie",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/Hect.jpg\",\r\n    \"name\": \"Héctor Barbossa\",\r\n    \"age\": \"40\",\r\n    \"weight\": \"80\",\r\n    \"story\": \"La primera vez que apareció fue a bordo de La Perla Negra, la cual estaba maldita junto a toda su tripulación.\",\r\n    \"movies\": []\r\n}",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/Wea.jpg\",\r\n    \"name\": \"Gobernador Weatherby Swann\",\r\n    \"age\": \"40\",\r\n    \"weight\": \"70\",\r\n    \"story\": \"Gobernador de Jamaica, instalado en Port Royal, y padre de Elizabeth Swann.\",\r\n    \"movies\": []\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

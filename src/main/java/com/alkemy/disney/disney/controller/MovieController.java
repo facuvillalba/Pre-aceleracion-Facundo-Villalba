@@ -35,7 +35,6 @@ public class MovieController {
     @GetMapping
     public ResponseEntity<List<MovieBasicDTO>> getDetailsByFilters(
             @RequestParam(required = false) String title,
-            //@RequestParam(required = false) String creationDate,
             @RequestParam(required = false) Long genreId,
             @RequestParam(required = false, defaultValue = "ASC") String order
     ){
@@ -66,5 +65,19 @@ public class MovieController {
         MovieDTO movie = movieService.save(movieDTO);
         movieService.addCharacterList(movie.getId(), charactersId);
         return ResponseEntity.status(HttpStatus.CREATED).body(movie);
+    }
+
+    //Controller to add to an existing movie and an existing character.
+    @PostMapping("{idMovie}/character/{idCharacter}")
+    public ResponseEntity<MovieDTO> addCharacterToMovie(@PathVariable Long idMovie, @PathVariable Long idCharacter){
+        movieService.addCharacter(idMovie, idCharacter );
+        return ResponseEntity.ok().body(movieService.getById(idMovie));
+    }
+
+    //Controller to delete character from movie.
+    @DeleteMapping("{idMovie}/character/{idCharacter}")
+    public ResponseEntity<MovieDTO> deleteCharacterFromMovie(@PathVariable Long idMovie, @PathVariable Long idCharacter){
+        movieService.deletedCharacter(idMovie, idCharacter);
+        return ResponseEntity.ok().body(movieService.getById(idMovie));
     }
 }

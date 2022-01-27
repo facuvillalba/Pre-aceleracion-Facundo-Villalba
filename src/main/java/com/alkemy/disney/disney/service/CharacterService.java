@@ -20,4 +20,6 @@ public interface CharacterService {
 
     void delete(Long id);
 
+
+
 }

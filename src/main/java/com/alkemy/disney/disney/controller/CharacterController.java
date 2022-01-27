@@ -7,6 +7,7 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class CharacterController {
 
     //Controller to create character and setting existing movie.
     @PostMapping
-    public ResponseEntity<CharacterDTO> save(@RequestParam Long idMovie, @RequestBody CharacterDTO character) {
+    public ResponseEntity<CharacterDTO> save(@RequestParam Long idMovie,@RequestBody CharacterDTO character) {
         CharacterDTO characterSaved = characterService.save(character, idMovie);
         return ResponseEntity.status(HttpStatus.CREATED).body(characterSaved);
     }

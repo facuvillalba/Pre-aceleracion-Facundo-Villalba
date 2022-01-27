@@ -68,10 +68,10 @@ public class MovieServiceImpl implements MovieService {
    }
 
     //Service to add new character to a movie.
-   public void addCharacter(Long idMovie, CharacterEntity character){
+   public void addCharacter(Long idMovie, Long idCharacter){
        MovieEntity movieEntity = getEntityById(idMovie);
        List<CharacterEntity> entities = movieEntity.getCharacters();
-       entities.add(character);
+       entities.add(characterService.getEntityById(idCharacter));
        movieEntity.setCharacters(entities);
        movieRepository.save(movieEntity);
    }
@@ -91,6 +91,14 @@ public class MovieServiceImpl implements MovieService {
     public MovieEntity getEntityById(Long id){
        MovieEntity movieEntity = movieRepository.getById(id);
        return movieEntity;
+    }
+
+    public void deletedCharacter(Long idMovie, Long idCharacter) {
+        MovieEntity movieEntity = getEntityById(idMovie);
+        List<CharacterEntity> entities = movieEntity.getCharacters();
+        entities.remove(characterService.getEntityById(idCharacter));
+        movieEntity.setCharacters(entities);
+        movieRepository.save(movieEntity);
     }
 
     //Service to add new List characters to a movie.
