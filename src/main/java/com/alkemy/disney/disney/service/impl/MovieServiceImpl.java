@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -73,7 +74,7 @@ public class MovieServiceImpl implements MovieService {
        if (movieEntity == null){
            throw new ParamNotFound("Id movie not found");
        }
-       List<CharacterEntity> entities = movieEntity.getCharacters();
+       Set<CharacterEntity> entities = movieEntity.getCharacters();
        entities.add(characterService.getEntityById(idCharacter));
        movieEntity.setCharacters(entities);
        movieRepository.save(movieEntity);
@@ -91,6 +92,7 @@ public class MovieServiceImpl implements MovieService {
         return result;
     }
 
+    //Service to search movie by id in repository.
     public MovieEntity getEntityById(Long id){
        MovieEntity movieEntity = movieRepository.getById(id);
         if (movieEntity == null){
@@ -102,20 +104,9 @@ public class MovieServiceImpl implements MovieService {
     //Service to delete character from movie in Repository.
     public void deletedCharacter(Long idMovie, Long idCharacter) {
         MovieEntity movieEntity = getEntityById(idMovie);
-        List<CharacterEntity> entities = movieEntity.getCharacters();
+        Set<CharacterEntity> entities = movieEntity.getCharacters();
         entities.remove(characterService.getEntityById(idCharacter));
         movieEntity.setCharacters(entities);
-        movieRepository.save(movieEntity);
-    }
-
-    //Service to add new List characters to a movie.
-    public void addCharacterList(Long idMovie, List<Long> charactersId) {
-        MovieEntity movieEntity = getEntityById(idMovie);
-        List<CharacterEntity> movieCharacters = movieEntity.getCharacters();
-        for (Long id : charactersId) {
-            movieCharacters.add(characterService.getEntityById(id));
-        }
-        movieEntity.setCharacters(movieCharacters);
         movieRepository.save(movieEntity);
     }
 }

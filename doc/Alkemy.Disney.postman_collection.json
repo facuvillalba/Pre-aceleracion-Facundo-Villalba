@@ -64,65 +64,6 @@
 			"response": []
 		},
 		{
-			"name": "genre",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzM0OTg3OCwiaWF0IjoxNjQzMzEzODc4fQ.jtte6OZSOVG7nSS8xDBOv7zEEiUIHneSarx1R2HHN0s",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Comedy\",\r\n    \"image\": \"/usr/tmp/Com.jpg\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/genres",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"genres"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "genres",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/genres",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"genres"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "movie",
 			"request": {
 				"method": "POST",
@@ -196,7 +137,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/movies/6",
+					"raw": "http://localhost:8080/movies/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -204,7 +145,7 @@
 					"port": "8080",
 					"path": [
 						"movies",
-						"6"
+						"10"
 					]
 				}
 			},
@@ -295,7 +236,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/movies/22/character/26",
+					"raw": "http://localhost:8080/movies/22/character/13",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -305,7 +246,7 @@
 						"movies",
 						"22",
 						"character",
-						"26"
+						"13"
 					]
 				}
 			},
@@ -384,7 +325,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/characters?weight=70",
+					"raw": "http://localhost:8080/characters",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -396,7 +337,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Pepe",
+							"value": "Jack Sparrow",
 							"disabled": true
 						},
 						{
@@ -406,11 +347,12 @@
 						},
 						{
 							"key": "weight",
-							"value": "70"
+							"value": "70",
+							"disabled": true
 						},
 						{
 							"key": "movies",
-							"value": "9",
+							"value": "10",
 							"disabled": true
 						}
 					]
@@ -474,6 +416,65 @@
 					"path": [
 						"characters",
 						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genre",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzM0OTg3OCwiaWF0IjoxNjQzMzEzODc4fQ.jtte6OZSOVG7nSS8xDBOv7zEEiUIHneSarx1R2HHN0s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Comedy\",\r\n    \"image\": \"/usr/tmp/Com.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genres",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/genres",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres"
 					]
 				}
 			},

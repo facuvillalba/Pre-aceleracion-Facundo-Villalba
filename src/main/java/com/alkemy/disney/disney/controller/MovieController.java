@@ -56,17 +56,6 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    //Controller to create movie and include existing characters.
-    @PostMapping("/withcharacters")
-    public ResponseEntity<MovieDTO> saveWithExistentCharacters(
-            @RequestParam(required = false) List<Long> charactersId,
-            @RequestBody MovieDTO movieDTO
-    ) {
-        MovieDTO movie = movieService.save(movieDTO);
-        movieService.addCharacterList(movie.getId(), charactersId);
-        return ResponseEntity.status(HttpStatus.CREATED).body(movie);
-    }
-
     //Controller to add to an existing movie and an existing character.
     @PostMapping("{idMovie}/character/{idCharacter}")
     public ResponseEntity<MovieDTO> addCharacterToMovie(@PathVariable Long idMovie, @PathVariable Long idCharacter){

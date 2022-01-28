@@ -11,8 +11,6 @@ public interface MovieService {
 
     MovieDTO getById(Long id);
 
-    void addCharacterList(Long idMovie, List<Long> charactersId);
-
     void addCharacter(Long idMovie, Long idCharacter);
 
     List<MovieBasicDTO> getByFilters(String title, Long genreId, String order);

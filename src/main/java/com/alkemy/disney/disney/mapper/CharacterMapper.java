@@ -6,8 +6,8 @@ import com.alkemy.disney.disney.dto.CharacterDTO;
 import com.alkemy.disney.disney.entity.CharacterEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
 
 @Component
 public class CharacterMapper {
@@ -28,7 +28,7 @@ public class CharacterMapper {
     }
 
     //Mapper convert from characterEntity to DTO
-    public CharacterDTO characterEntity2DTO(CharacterEntity entity, boolean loadPeliculas){
+    public CharacterDTO characterEntity2DTO(CharacterEntity entity, boolean loadMovies){
         CharacterDTO characterDTO = new CharacterDTO();
         characterDTO.setId(entity.getId());
         characterDTO.setImage(entity.getImage());
@@ -37,7 +37,7 @@ public class CharacterMapper {
         characterDTO.setWeight(entity.getWeight());
         characterDTO.setStory(entity.getStory());
 
-        if(loadPeliculas) {
+        if(loadMovies) {
             List<MovieDTO> movieDTOS = this.movieMapper.movieEntityList2DTOList(entity.getMovies(), false);
             characterDTO.setMovies(movieDTOS);
         }
@@ -45,10 +45,10 @@ public class CharacterMapper {
     }
 
     //Mapper convert from List characterEntity to List DTO
-    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> entities, boolean loadPeliculas){
+    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> entities, boolean loadMovies){
         List<CharacterDTO> dtos = new ArrayList<>();
         for (CharacterEntity entity : entities) {
-            dtos.add(this.characterEntity2DTO(entity, loadPeliculas));
+            dtos.add(this.characterEntity2DTO(entity, loadMovies));
         }
         return dtos;
     }
@@ -61,6 +61,24 @@ public class CharacterMapper {
         }
         return entities;
     }
+
+    //Mapper convert from Set characterDTO to List Entity
+    public Set<CharacterEntity> characterDTOList2EntitySet(List<CharacterDTO> dtos){
+        Set<CharacterEntity> entities = new HashSet<>();
+        for (CharacterDTO dto : dtos){
+            entities.add(this.characterDTO2Entity(dto));
+        }
+        return entities;
+    }
+
+    //Mapper convert from Lis characterEntity to List DTO
+    public List<CharacterDTO> characterEntitySet2DTOList(Collection<CharacterEntity> entities, boolean loadMovies){
+        List<CharacterDTO> dtos = new ArrayList<>();
+        for (CharacterEntity entity : entities){
+            dtos.add(characterEntity2DTO(entity, loadMovies));
+            }
+        return dtos;
+        }
 
     //Mapper update
     public void characterEntityRefreshValues(CharacterEntity entity, CharacterDTO characterDTO) {

@@ -6,8 +6,8 @@ import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "movie")
@@ -56,8 +56,7 @@ public class MovieEntity {
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "character_id"))
 
-    private List<CharacterEntity> characters = new ArrayList<>();
-
+    private Set<CharacterEntity> characters = new HashSet<>();
 
     @Override
     public boolean equals(Object obj){
