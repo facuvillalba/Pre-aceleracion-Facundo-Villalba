@@ -70,6 +70,9 @@ public class MovieServiceImpl implements MovieService {
     //Service to add new character to a movie.
    public void addCharacter(Long idMovie, Long idCharacter){
        MovieEntity movieEntity = getEntityById(idMovie);
+       if (movieEntity == null){
+           throw new ParamNotFound("Id movie not found");
+       }
        List<CharacterEntity> entities = movieEntity.getCharacters();
        entities.add(characterService.getEntityById(idCharacter));
        movieEntity.setCharacters(entities);
@@ -90,9 +93,13 @@ public class MovieServiceImpl implements MovieService {
 
     public MovieEntity getEntityById(Long id){
        MovieEntity movieEntity = movieRepository.getById(id);
+        if (movieEntity == null){
+            throw new ParamNotFound("Id movie not found");
+        }
        return movieEntity;
     }
 
+    //Service to delete character from movie in Repository.
     public void deletedCharacter(Long idMovie, Long idCharacter) {
         MovieEntity movieEntity = getEntityById(idMovie);
         List<CharacterEntity> entities = movieEntity.getCharacters();
@@ -103,12 +110,12 @@ public class MovieServiceImpl implements MovieService {
 
     //Service to add new List characters to a movie.
     public void addCharacterList(Long idMovie, List<Long> charactersId) {
-        MovieEntity movie = getEntityById(idMovie);
-        List<CharacterEntity> movieCharacters = movie.getCharacters();
+        MovieEntity movieEntity = getEntityById(idMovie);
+        List<CharacterEntity> movieCharacters = movieEntity.getCharacters();
         for (Long id : charactersId) {
             movieCharacters.add(characterService.getEntityById(id));
         }
-        movie.setCharacters(movieCharacters);
-        movieRepository.save(movie);
+        movieEntity.setCharacters(movieCharacters);
+        movieRepository.save(movieEntity);
     }
 }

@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\" : \"villalbafacundo@hotmail.com\",\r\n    \"password\" : \"pass0001\"\r\n}",
+					"raw": "{\r\n    \"username\" : \"cacuafv@gmail.com\",\r\n    \"password\" : \"pass0005\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/auth/singup",
+					"raw": "http://localhost:8080/auth/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -28,7 +28,7 @@
 					"port": "8080",
 					"path": [
 						"auth",
-						"singup"
+						"register"
 					]
 				}
 			},
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"cacucax@hotmail.com\",\r\n    \"password\": \"pass0002\"\r\n}",
+					"raw": "{\r\n    \"username\": \"cacuafv@gmail.com\",\r\n    \"password\": \"pass0005\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzM0OTg3OCwiaWF0IjoxNjQzMzEzODc4fQ.jtte6OZSOVG7nSS8xDBOv7zEEiUIHneSarx1R2HHN0s",
 						"type": "text"
 					}
 				],
@@ -104,7 +104,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -123,46 +123,13 @@
 			"response": []
 		},
 		{
-			"name": "genre/id",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/genres/4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"genres",
-						"4"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "movie",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -190,13 +157,67 @@
 			"response": []
 		},
 		{
+			"name": "movie?character",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/22/character/26",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"22",
+						"character",
+						"26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie/id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "movies?filters",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -239,37 +260,11 @@
 		{
 			"name": "movie/id",
 			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/movies/6",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"movies",
-						"6"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "movie/id",
-			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -295,12 +290,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/movies/6/character/8",
+					"raw": "http://localhost:8080/movies/22/character/26",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -308,9 +303,9 @@
 					"port": "8080",
 					"path": [
 						"movies",
-						"6",
+						"22",
 						"character",
-						"8"
+						"26"
 					]
 				}
 			},
@@ -323,7 +318,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -352,69 +347,26 @@
 			"response": []
 		},
 		{
-			"name": "movie?character",
+			"name": "character/id",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/movies/22/character/11",
+					"raw": "http://localhost:8080/characters/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"movies",
-						"22",
-						"character",
+						"characters",
 						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "movie?withcharacters",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1Y2F4QGhvdG1haWwuY29tIiwiZXhwIjoxNjQzMjYyMzIyLCJpYXQiOjE2NDMyMjYzMjJ9.oNJ3SwJNulPB8og2S8CVLeaJbsZuOMWHd91NBhTWGXc",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/Pir2.jpg\",\r\n    \"title\": \"Pirates of the Caribbean 2\",\r\n    \"creationDate\": \"2006-01-01\",\r\n    \"qualification\": 5,\r\n    \"genreId\": 3,\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"/usr/tmp/Pir2.jpg\",\r\n            \"name\": \"Davy Jones \",\r\n            \"age\": \"40\",\r\n            \"weight\": \"75\",\r\n            \"story\": \"El Amo de las Profundidades del Océano, que capitanea el fantasmal barco Holandés Errante.\",\r\n            \"movies\": []\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/movies/withcharacters?charactersId=10,11,12",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"movies",
-						"withcharacters"
-					],
-					"query": [
-						{
-							"key": "charactersId",
-							"value": "10,11,12"
-						}
 					]
 				}
 			},
@@ -427,7 +379,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -469,37 +421,11 @@
 		{
 			"name": "character/id",
 			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/characters/11",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"characters",
-						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "character/id",
-			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -525,7 +451,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWN1YWZ2QGdtYWlsLmNvbSIsImV4cCI6MTY0MzQxNDc4MCwiaWF0IjoxNjQzMzc4NzgwfQ.Bo3ELQvPeSjXddulD9rSoopfKzebEK7kae4VHgjHNjM",
 						"type": "text"
 					}
 				],
@@ -548,46 +474,6 @@
 					"path": [
 						"characters",
 						"21"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "character?withmovie",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWxsYWxiYWZhY3VuZG9AaG90bWFpbC5jb20iLCJleHAiOjE2NDMyNzg3MjgsImlhdCI6MTY0MzI0MjcyOH0.Zv36Xk3224iJccT8jDQk7m5pw3iHwwulkuE734xetFU",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/Wea.jpg\",\r\n    \"name\": \"Gobernador Weatherby Swann\",\r\n    \"age\": \"40\",\r\n    \"weight\": \"70\",\r\n    \"story\": \"Gobernador de Jamaica, instalado en Port Royal, y padre de Elizabeth Swann.\",\r\n    \"movies\": []\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/characters?idMovie=9",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"characters"
-					],
-					"query": [
-						{
-							"key": "idMovie",
-							"value": "9"
-						}
 					]
 				}
 			},

@@ -54,6 +54,9 @@ public class CharacterServiceImpl implements CharacterService {
     public List<CharacterBasicDTO> getByFilters(String name, Integer age, Long weight, List<Long> movies) {
         CharacterFiltersDTO filtersDTO = new CharacterFiltersDTO(name, age, weight, movies);
         List<CharacterEntity> entities = this.characterRepository.findAll(this.characterSpecification.getByFilters(filtersDTO));
+        if (!entities.isEmpty()) {
+            throw new ParamNotFound("Id character not found");
+        }
         List<CharacterBasicDTO> dtos = this.characterMapper.characterEntityList2BasicDTOList(entities);
         return dtos;
     }
@@ -81,6 +84,10 @@ public class CharacterServiceImpl implements CharacterService {
 
     //Service to search character by id in repository.
     public CharacterEntity getEntityById(Long id) {
-        return characterRepository.getById(id);
+        CharacterEntity characterEntity = characterRepository.getById(id);
+        if ( characterEntity== null){
+            throw new ParamNotFound("Id character not found");
+        }
+        return characterEntity;
     }
 }

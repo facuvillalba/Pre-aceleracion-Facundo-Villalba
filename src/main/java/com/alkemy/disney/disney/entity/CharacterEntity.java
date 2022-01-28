@@ -7,6 +7,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "charac")
@@ -38,4 +39,15 @@ public class CharacterEntity {
 
     private List<MovieEntity> movies = new ArrayList<>();
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        CharacterEntity other = (CharacterEntity) obj;
+        return Objects.equals(id, other.id);
+    }
 }
