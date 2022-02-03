@@ -33,7 +33,6 @@ public class EmailServiceImpl implements EmailService {
         }
 
         String apiKey = env.getProperty("EMAIL_API_KEY");
-
         Email fromEmail = new Email(emailSender);
         Email toEmail = new Email(to);
         Content content = new Content(
@@ -50,11 +49,9 @@ public class EmailServiceImpl implements EmailService {
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
             Response response = sg.api(request);
-            System.out.println(response.getStatusCode());
-            System.out.println(response.getBody());
-            System.out.println(response.getHeaders());
+
         } catch (IOException ex){
-            System.out.println("Error trying to send the email");
+           System.out.println("Error trying to send the email");
         }
     }
 }

@@ -4,12 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.List;
 
-@Data@AllArgsConstructor
+@Data
+@AllArgsConstructor
 public class ApiErrorDTO {
 
     private HttpStatus status;
-    private String message;
+
+    @Enumerated(EnumType.STRING)
+    private String errorMessage;
+
     private List<String> errors;
+
+
 }

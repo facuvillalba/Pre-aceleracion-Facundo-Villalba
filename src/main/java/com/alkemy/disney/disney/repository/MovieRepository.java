@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-
 @Repository
 public interface MovieRepository extends JpaRepository<MovieEntity, Long>, JpaSpecificationExecutor<MovieEntity> {
 
     List<MovieEntity> findAll(Specification<MovieEntity> spec);
+
+    MovieEntity findByTitle(String title);
 
 }

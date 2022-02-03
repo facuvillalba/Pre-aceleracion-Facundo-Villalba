@@ -4,7 +4,6 @@ import com.alkemy.disney.disney.auth.dto.AuthenticationRequest;
 import com.alkemy.disney.disney.auth.dto.AuthenticationResponse;
 import com.alkemy.disney.disney.auth.dto.UserDTO;
 import com.alkemy.disney.disney.auth.service.JwtUtils;
-
 import com.alkemy.disney.disney.auth.service.UserDetailsCustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +42,7 @@ public class UserAuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> singIn(@RequestBody AuthenticationRequest authRequest) throws  Exception{
+    public ResponseEntity<AuthenticationResponse> singIn(@Valid @RequestBody AuthenticationRequest authRequest) throws  Exception{
 
         UserDetails userDetails;
         try{

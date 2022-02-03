@@ -3,11 +3,12 @@ package com.alkemy.disney.disney.controller;
 import com.alkemy.disney.disney.dto.MovieDTO;
 import com.alkemy.disney.disney.dto.basic.MovieBasicDTO;
 import com.alkemy.disney.disney.service.MovieService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class MovieController {
 
     //Controller to create movie.
     @PostMapping
-    public ResponseEntity<MovieDTO> save(@RequestBody MovieDTO movie) {
+    public ResponseEntity<MovieDTO> save(@Valid @RequestBody MovieDTO movie) {
         MovieDTO movieSalved = this.movieService.save(movie);
         return ResponseEntity.status(HttpStatus.CREATED).body(movieSalved);
     }
@@ -39,12 +40,12 @@ public class MovieController {
             @RequestParam(required = false, defaultValue = "ASC") String order
     ){
     List<MovieBasicDTO> movies = this.movieService.getByFilters(title, genreId, order);
-       return  ResponseEntity.ok(movies);
+       return  ResponseEntity.ok().body(movies);
     }
 
     //Controller to movie update.
     @PutMapping("/{id}")
-    public ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieDTO movie) throws NotFoundException {
+    public ResponseEntity<MovieDTO> update(@PathVariable Long id, @Valid @RequestBody MovieDTO movie) {
         MovieDTO result = this.movieService.update(id, movie);
         return ResponseEntity.ok().body(result);
     }
@@ -63,10 +64,10 @@ public class MovieController {
         return ResponseEntity.ok().body(movieService.getById(idMovie));
     }
 
-    //Controller to delete character from movie.
+    //Controller to remove character from movie.
     @DeleteMapping("{idMovie}/character/{idCharacter}")
     public ResponseEntity<MovieDTO> deleteCharacterFromMovie(@PathVariable Long idMovie, @PathVariable Long idCharacter){
-        movieService.deletedCharacter(idMovie, idCharacter);
+        movieService.removeCharacter(idMovie, idCharacter);
         return ResponseEntity.ok().body(movieService.getById(idMovie));
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +19,7 @@ public class GenreController {
 
     //Controller for genre creation.
     @PostMapping
-    public ResponseEntity<GenreDTO> save(@RequestBody GenreDTO genre){
+    public ResponseEntity<GenreDTO> save(@RequestBody @Valid GenreDTO genre){
         GenreDTO genreSaved = genreService.save(genre);
         return ResponseEntity.status(HttpStatus.CREATED).body(genreSaved);
     }

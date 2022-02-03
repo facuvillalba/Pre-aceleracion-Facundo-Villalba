@@ -2,6 +2,7 @@ package com.alkemy.disney.disney.service.impl;
 
 import com.alkemy.disney.disney.dto.basic.CharacterBasicDTO;
 import com.alkemy.disney.disney.dto.CharacterDTO;
+import com.alkemy.disney.disney.dto.error.ErrorMessage;
 import com.alkemy.disney.disney.dto.filters.CharacterFiltersDTO;
 import com.alkemy.disney.disney.entity.CharacterEntity;
 import com.alkemy.disney.disney.exception.ParamNotFound;
@@ -44,7 +45,7 @@ public class CharacterServiceImpl implements CharacterService {
     public CharacterDTO getById(Long id) {
         Optional<CharacterEntity> entity = this.characterRepository.findById(id);
         if(!entity.isPresent()){
-           throw new ParamNotFound("Id character not found");
+           throw new ParamNotFound(ErrorMessage.CHARACTER_NOT_FOUND.key());
         }
         CharacterDTO characterDTO = this.characterMapper.characterEntity2DTO(entity.get(), true);
         return characterDTO;
@@ -62,7 +63,7 @@ public class CharacterServiceImpl implements CharacterService {
     public void delete (Long id){
         Optional<CharacterEntity> entity = this.characterRepository.findById(id);
         if (!entity.isPresent()){
-            throw new ParamNotFound("Id character not found");
+            throw new ParamNotFound(ErrorMessage.CHARACTER_NOT_DELETED.key());
         }
         this.characterRepository.deleteById(id);
     }
@@ -71,7 +72,7 @@ public class CharacterServiceImpl implements CharacterService {
     public CharacterDTO update (Long id, CharacterDTO character) {
         Optional<CharacterEntity> entity = this.characterRepository.findById(id);
         if (!entity.isPresent()){
-            throw new ParamNotFound( "Id character not found");
+            throw new ParamNotFound(ErrorMessage.CHARACTER_NOT_UPDATED.key());
         }
         this.characterMapper.characterEntityRefreshValues(entity.get(), character);
         CharacterEntity entitySaved = this.characterRepository.save(entity.get());
@@ -81,10 +82,10 @@ public class CharacterServiceImpl implements CharacterService {
 
     //Service to search character by id in repository.
     public CharacterEntity getEntityById(Long id) {
-        CharacterEntity characterEntity = characterRepository.getById(id);
-        if ( characterEntity == null){
-            throw new ParamNotFound("Id character not found");
+        Optional<CharacterEntity> characterEntity = characterRepository.findById(id);
+        if ( !characterEntity.isPresent()){
+            throw new ParamNotFound(ErrorMessage.CHARACTER_NOT_FOUND.key());
         }
-        return characterEntity;
+        return characterEntity.get();
     }
 }

@@ -3,12 +3,12 @@ package com.alkemy.disney.disney.controller;
 import com.alkemy.disney.disney.dto.basic.CharacterBasicDTO;
 import com.alkemy.disney.disney.dto.CharacterDTO;
 import com.alkemy.disney.disney.service.CharacterService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +20,7 @@ public class CharacterController {
 
     //Controller to create character and setting existing movie.
     @PostMapping
-    public ResponseEntity<CharacterDTO> save(@RequestParam Long idMovie,@RequestBody CharacterDTO character) {
+    public ResponseEntity<CharacterDTO> save(@RequestParam Long idMovie,@Valid @RequestBody  CharacterDTO character) {
         CharacterDTO characterSaved = characterService.save(character, idMovie);
         return ResponseEntity.status(HttpStatus.CREATED).body(characterSaved);
     }
@@ -45,7 +45,7 @@ public class CharacterController {
 
     //Controller to character update.
     @PutMapping("/{id}")
-    public ResponseEntity<CharacterDTO> update(@PathVariable Long id, @RequestBody CharacterDTO character) throws NotFoundException {
+    public ResponseEntity<CharacterDTO> update(@PathVariable Long id, @Valid @RequestBody CharacterDTO character) {
         CharacterDTO result = this.characterService.update(id, character);
         return ResponseEntity.ok().body(result);
     }
