@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,8 +15,9 @@ import java.util.List;
 public class MovieDTO {
 
     private Long id;
+    @NotBlank
     private String image;
-    @NotEmpty(message = "Title cannot be null ")
+    @NotBlank(message = "Title cannot be null ")
     private String title;
     @NotNull(message = "Date cannot be null ")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

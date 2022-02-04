@@ -44,15 +44,6 @@ public class CharacterMapper {
         return characterDTO;
     }
 
-    //Mapper convert from List characterEntity to List DTO
-    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> entities, boolean loadMovies){
-        List<CharacterDTO> dtos = new ArrayList<>();
-        for (CharacterEntity entity : entities) {
-            dtos.add(this.characterEntity2DTO(entity, loadMovies));
-        }
-        return dtos;
-    }
-
     //Mapper convert from List characterDTO to List Entity
     public List<CharacterEntity> characterDTOList2EntityList(List<CharacterDTO> dtos){
         List<CharacterEntity> entities = new ArrayList<>();
